@@ -52,10 +52,20 @@ view: t_sub_passenger {
     drill_fields: []
   }
 
-  measure: passenger_cnt {
+  measure: on_passenger_cnt {
+    label : "승차인원수"
     type: number
-    sql: sum(${TABLE}.passenger_cnt) ;;
+    sql: sum(${TABLE}.passenger_cnt)
+    filters: {
+      field : on_off_type
+      value : "승차"
+    };;
   }
+
+  # measure: passenger_cnt {
+  #   type: number
+  #   sql: sum(${TABLE}.passenger_cnt) ;;
+  # }
 
   # measure : total_passenger_cnt {
   #   type :  number
