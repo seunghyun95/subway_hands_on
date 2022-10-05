@@ -22,11 +22,6 @@ view: t_sub_passenger {
     sql: ${TABLE}.on_off_type ;;
   }
 
-  measure: passenger_cnt {
-    type: number
-    sql: ${TABLE}.passenger_cnt ;;
-  }
-
   dimension: passenger_type {
     type: string
     sql: ${TABLE}.passenger_type ;;
@@ -56,4 +51,14 @@ view: t_sub_passenger {
     type: count
     drill_fields: []
   }
+
+  measure: passenger_cnt {
+    type: number
+    sql: sum(${TABLE}.passenger_cnt) ;;
+  }
+
+  # measure : total_passenger_cnt {
+  #   type :  number
+  #   sql : sum(${TABLE}.passenger_cnt) ;;
+  # }
 }
